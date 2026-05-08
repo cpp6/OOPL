@@ -7,11 +7,10 @@ public class ATMApplication {
         double balance = 10000;
         int choice;
         
-        while (true) {
-            
+        System.out.println("===== ATM MACHINE =====");
+        
+        while (true) {            
             try {
-                
-                System.out.println("===== ATM MACHINE =====");
                 System.out.println("\n1. Check Balance");
                 System.out.println("2. Deposit Money");
                 System.out.println("3. Withdraw Money");
@@ -83,10 +82,6 @@ public class ATMApplication {
             catch (Exception e) {
                 System.out.println("Invalid input! Please enter numbers only.");
                 sc.nextLine();
-            }
-
-            finally {
-                System.out.println("Transaction process completed.");
             }
         }
     }
