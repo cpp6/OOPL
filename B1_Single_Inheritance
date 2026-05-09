@@ -1,64 +1,56 @@
 import java.util.Scanner;
 
-class Employee {
-
-    int empId;
+class Person{
     String name;
-    double salary;
+    int age;
 
-    Employee(int empId, String name, double salary) {
-        this.empId = empId;
-        this.name = name;
-        this.salary = salary;
+    void getPersonData(Scanner sc)
+    {
+        System.out.println("Enter Name: ");
+        name = sc.nextLine();
+
+        System.out.println("Enter Age: ");
+        age = sc.nextInt();
     }
 
-    void displayEmployee() {
-        System.out.println("Employee ID: " + empId);
-        System.out.println("Employee Name: " + name);
-        System.out.println("Salary: " + salary);
-    }
-}
-
-class Developer extends Employee {
-    String projectName;
-
-    Developer(int empId, String name, double salary, String projectName) {
-        super(empId, name, salary);   
-        this.projectName = projectName;
-    }
-
-    void displayDeveloper() {
-        displayEmployee();  
-        System.out.println("Project Name: " + projectName);
+    void display()
+    {
+        System.out.println("Name: "+ name);
+        System.out.println("Age: "+ age) ;
     }
 }
 
-public class EmployeeDemo {
-    public static void main(String[] args) {
+class Student extends Person {
+    int rollno;
+    String course;
 
-        Scanner sc = new Scanner(System.in);
-
-        // Taking input at runtime
-        System.out.print("Enter Employee ID: ");
-        int id = sc.nextInt();
-        sc.nextLine();  
-
-        System.out.print("Enter Employee Name: ");
-        String name = sc.nextLine();
-
-        System.out.print("Enter Salary: ");
-        double salary = sc.nextDouble();
+    void getStudentData(Scanner sc) {
+        getPersonData(sc);
+        System.out.println("Enter Roll no.: ");
+        rollno = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("Enter Project Name: ");
-        String project = sc.nextLine();
-
-        Developer d1 = new Developer(id, name, salary, project);
-
-        System.out.println("\n----- Employee Details -----");
-        d1.displayDeveloper();
-
-        sc.close();
+        System.out.println("Enter Course: ");
+        course = sc.nextLine();
     }
-}
 
+    void displayInfo() {
+        display();
+        System.out.println("Roll no.: " + rollno);
+        System.out.println("Course: " + course);
+    }
+
+    public static void main(String[] args)
+        {
+            Scanner sc = new Scanner(System.in);
+            Student s = new Student();
+
+            System.out.println("\n***** Enter Student Details *****");
+            s.getStudentData(sc);
+
+            System.out.println("\n***** Student Information *****");
+            s.displayInfo();
+
+            sc.close();
+        }
+    }
